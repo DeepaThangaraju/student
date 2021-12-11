@@ -1,7 +1,7 @@
 import express from "express";
 import { getstudentbyparams, getstudentbyid, deletestudentbyid, editbyid, createstudent } from "../studentmethod.js"
 const router=express.Router();
-router.get("/", async (request, response) => {
+router.route("/").get( async (request, response) => {
     // const student= await client.db("studentmentor").collection("student").find({});
     
     const filter=request.query;
@@ -16,8 +16,15 @@ router.get("/", async (request, response) => {
   response.send(students);
     
     
+  })
+  .post( async (request, response) => {
+    const data=request.body;
+    // console.log(data);
+   
+    const result=await createstudent(data);
+    response.send(result);
   });
-  router.get("/:id",async (request, response) => {
+  router.route("/:id").get(async (request, response) => {
     const {id}=request.params;
     console.log(id);
     const student1=await getstudentbyid(id);
@@ -26,9 +33,8 @@ router.get("/", async (request, response) => {
   response .send(student1)
   :response.status(404).send({message:"no student found"})
   //   :response.status(404).send({message:"Student not foun"});
-  });
-  
-  router.delete("/:id",async (request, response) => {
+  })
+  .delete(async (request, response) => {
       const {id}=request.params;
       console.log(id);
       const deleteditem=await deletestudentbyid(id);
@@ -36,9 +42,8 @@ router.get("/", async (request, response) => {
     response .send(deleteditem)
     :response.status(404).send({message:"no student found"})
   
-    });
-  
-    router.put("/:id",async (request, response) => {
+    })
+  .put(async (request, response) => {
       const {id}=request.params;
       console.log(id);
       const data=request.body;
@@ -51,12 +56,6 @@ router.get("/", async (request, response) => {
   
     });
   
-    router.post("/", async (request, response) => {
-      const data=request.body;
-      // console.log(data);
-     
-      const result=await createstudent(data);
-      response.send(result);
-    });
+    
 
     export const studentrouter=router;
