@@ -17,6 +17,7 @@ router.route("/").get( async (request, response) => {
     
     
   })
+  //get student details by query params
   .post( async (request, response) => {
     const data=request.body;
     // console.log(data);
@@ -24,6 +25,7 @@ router.route("/").get( async (request, response) => {
     const result=await createstudent(data);
     response.send(result);
   });
+  //create a data using post
   router.route("/:id").get(async (request, response) => {
     const {id}=request.params;
     console.log(id);
@@ -34,6 +36,7 @@ router.route("/").get( async (request, response) => {
   :response.status(404).send({message:"no student found"})
   //   :response.status(404).send({message:"Student not foun"});
   })
+  //get student by id
   .delete(async (request, response) => {
       const {id}=request.params;
       console.log(id);
@@ -43,6 +46,7 @@ router.route("/").get( async (request, response) => {
     :response.status(404).send({message:"no student found"})
   
     })
+    //delete student by id
   .put(async (request, response) => {
       const {id}=request.params;
       console.log(id);
@@ -55,6 +59,7 @@ router.route("/").get( async (request, response) => {
   //   :response.status(404).send({message:"no student found"})
   
     });
+    //edit student by id
   
     
 

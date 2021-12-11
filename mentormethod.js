@@ -1,5 +1,5 @@
 import { client } from "./index.js";
-
+//it contains query that retrive  the data from mongodb
 async function editmentorbyid(id, data) {
     return await client
         .db("studentmentor")

@@ -23,6 +23,7 @@ const student = [
 {"id":"202","student_name":"varun","mentor_name":"dhanalakshmi","batch":"b28wd"}]
 
 // const MONGO_URL="mongodb://localhost";
+//mongodb connection
 const MONGO_URL=process.env.MONGO_URL;
 async function createConnection(){
    const client=new MongoClient(MONGO_URL);
@@ -36,9 +37,9 @@ app.get("/", (request, response) => {
   response.send("Hello World!!!");
 });
 
-app.use("/student",studentrouter);
+app.use("/student",studentrouter); //route student method  
 
-app.use("/mentor",mentorrouter);
+app.use("/mentor",mentorrouter);//route mentor method
 
 
 

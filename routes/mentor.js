@@ -11,6 +11,7 @@ router.route("/").get( async (request, response) => {
     
     
   })
+  //filter the mentor by query
 .post( async (request, response) => {
     const data=request.body;
     console.log(data);
@@ -18,6 +19,7 @@ router.route("/").get( async (request, response) => {
     const result=await creatementor(data);
     response.send(result);
   });
+  //post the data into mongodb
   router.route("/:id").get(async (request, response) => {
     const {id}=request.params;
     console.log(id);
@@ -26,6 +28,7 @@ router.route("/").get( async (request, response) => {
   response .send(mentor1)
   :response.status(404).send({message:"no mentor found"})
   })
+  //get mentor by their id
   .delete(async (request, response) => {
     const {id}=request.params;
     console.log(id);
@@ -35,6 +38,8 @@ router.route("/").get( async (request, response) => {
   :response.status(404).send({message:"no mentor found"})
 
   })
+
+  //delete mentor by their id
   .put(async (request, response) => {
     const {id}=request.params;
     console.log(id);
@@ -44,6 +49,7 @@ router.route("/").get( async (request, response) => {
     response.send(update);
 
   });
+  //edit the mentor by id(assign student to the mentor)
 
   
   
