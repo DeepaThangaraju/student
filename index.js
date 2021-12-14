@@ -4,15 +4,14 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import { studentrouter } from "./routes/student.js";
 import { mentorrouter } from "./routes/mentor.js";
-import cors from 'cors';
+
 import { getstudentbyparams, getstudentbyid, deletestudentbyid, editbyid, createstudent } from "./studentmethod.js";
 import { getmentorbyquery, getmentorbyid, deletementorbyid, editmentorbyid, creatementor } from "./mentormethod.js";
 dotenv.config();
 console.log(process.env);
 const app = express();
-
 const PORT = process.env.PORT;
-app.use(cors());
+
 app.use(express.json());
 
 const mentor = [
