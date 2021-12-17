@@ -11,19 +11,21 @@ import {ObjectId} from "mongodb";
     return await client
         .db("studentmentor")
         .collection("student")
-        .updateOne({ id: id }, { $set: data });
+        .updateOne({id:id}, { $set: data });
 }
  async function deletestudentbyid(id) {
+     console.log(id);
     return await client
         .db("studentmentor")
         .collection("student")
-        .deleteOne({ id: id });
+        .deleteOne({ id:id });
 }
  async function getstudentbyid(id) {
+     
     return await client
         .db("studentmentor")
         .collection("student")
-        .findOne({ _id: ObjectId(id) });
+        .findOne({ id: id });
 }
  async function getstudentbyparams(filter) {
     return await client.db("studentmentor").collection("student").find(filter).toArray();

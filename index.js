@@ -8,7 +8,7 @@ import cors from 'cors';
 import { getstudentbyparams, getstudentbyid, deletestudentbyid, editbyid, createstudent } from "./studentmethod.js";
 import { getmentorbyquery, getmentorbyid, deletementorbyid, editmentorbyid, creatementor } from "./mentormethod.js";
 dotenv.config();
-console.log(process.env);
+// console.log(process.env);
 const app = express();
 const PORT = process.env.PORT;
 app.use(cors());
