@@ -20,7 +20,7 @@ router.route("/").get( async (request, response) => {
   //get student details by query params
   .post( async (request, response) => {
     const data=request.body;
-    // console.log(data);
+    console.log(data);
    
     const result=await createstudent(data);
     response.send(result);
