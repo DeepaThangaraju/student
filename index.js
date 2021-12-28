@@ -11,7 +11,7 @@ dotenv.config();
 // console.log(process.env);
 const app = express();
 const PORT = process.env.PORT;
-app.use(cors());
+app.use(cors({origin:true}));
 app.use(express.json());
 
 const mentor = [
